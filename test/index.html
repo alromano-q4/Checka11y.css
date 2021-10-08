@@ -55,6 +55,7 @@
     <section>
       <h2>iframe: iframe has title attribute</h2>
       <iframe src="https://checka11y.jackdomleo.dev" height="500" width="500"></iframe>
+      <iframe src="https://checka11y.jackdomleo.dev" height="500" width="500" title="Test with title"></iframe>
     </section>
     <section>
       <h2>Lists: All children of &lt;ol&gt; must only be &lt;li&gt;, &lt;template&gt; or &lt;script&gt;</h2>
@@ -210,7 +211,8 @@
     </section>
     <section>
       <h2>Dir attribute: The dir attribute can only have the values, ltr, rtl and auto.</h2>
-      <p dir="lr">This is an &lt;p&gt; with dir attribute set to lr</p>
+      <p dir="lr">This is an &lt;p&gt; with dir attribute set to lr (invalid)</p>
+      <p dir="rtl">This is an &lt;p&gt; with dir attribute set to rtl (valid)</p>
     </section>
     <section>
       <h2>Check the tabindex of commonly tabbed to elements and show an error if it is -1</h2>
@@ -253,14 +255,25 @@
         <h5></h5>
         <h6></h6>
       </div>
-      <div>
-        <p>Headings should be reachable by assistive technologies (do not use <code>aria-hidden</code> or similars on a heading).</code></p>
-        <h1 aria-hidden="true">H1 with aria-hidden="true"</h1>
-        <h2 aria-hidden="true">H2 with aria-hidden="true"</h2>
-        <h3 aria-hidden="true">H3 with aria-hidden="true"</h3>
-        <h4 aria-hidden="true">H4 with aria-hidden="true"</h4>
-        <h5 aria-hidden="true">H5 with aria-hidden="true"</h5>
-        <h6 aria-hidden="true">H6 with aria-hidden="true"</h6>
+    </section>
+    <section>
+      <h2>Headings: reachable by assistive technologies</h2>
+      <p>Headings should be reachable by assistive technologies (do not use <code>aria-hidden</code> or similars on a heading).</code></p>
+      <h1 aria-hidden="true">H1 with aria-hidden="true"</h1>
+      <h2 aria-hidden="true">H2 with aria-hidden="true"</h2>
+      <h3 aria-hidden="true">H3 with aria-hidden="true"</h3>
+      <h4 aria-hidden="true">H4 with aria-hidden="true"</h4>
+      <h5 aria-hidden="true">H5 with aria-hidden="true"</h5>
+      <h6 aria-hidden="true">H6 with aria-hidden="true"</h6>
+    </section>
+    <section id="heading-skip-levels">
+        <h2>Headings: do not skip levels</p>
+        <h4>H4 (correct: because no higher level above it, even when it skipped h3)</h4>
+        <h1>H1 (error: not in order, should be unique)</h1>
+        <h2>H2 (correct)</h2>
+        <h3>H3 (error: first h3 after h4)</h3>
+        <h6>H6 (correct: because no higher level above it, even when it skipped h5)</h6>
+        <h5>H5 (error: not in order)</h5>
       </div>
     </section>
     <section>
@@ -304,13 +317,78 @@
       </div>
     </section>
     <section>
-      <h2>Avoide using mouse event handlers without the appropriate keyboard alternative on HTML Elements</h2>
+      <h2>Avoid using mouse event handlers without the appropriate keyboard alternative on HTML Elements</h2>
       <div>
         <div onclick="">A div with onclick</div>
         <div onclick="" onkeydown="">A div with onclick and onkeydown</div>
         <div onclick="" onkeydown="" role="button">A div with with onclick, onkeydown and role=button</div>
         <div onclick="" onkeydown="" role="button" tabindex="-1">A div with onclick, onkeydown, role=button and tabindex=-1</div>
       </div>
+    </section>
+    <section>
+      <h2>The <code>title</code> attribute has many accessibility concerns, consider using an alternative method.</h2>
+      <p title="Hello!">
+        I have a title attribute. Hover me.
+      </p>
+    </section>
+    <section>
+      <h2>Elements with aria-hidden should not have focusable descendants.</h2>
+      <div aria-hidden="true">
+        <a>Anchor</a>
+      </div>
+      <div aria-hidden="true">
+        <map>
+          <area />
+        </map>
+      </div>
+      <div aria-hidden="true">
+        <audio controls></audio>
+      </div>
+      <div aria-hidden="true">
+        <button>Button</button>
+      </div>
+      <div aria-hidden="true">
+        <iframe src="https://checka11y.jackdomleo.dev" title="Checka11y.css website"></iframe>
+      </div>
+      <div aria-hidden="true">
+        <input type="texr" />
+      </div>
+      <div aria-hidden="true">
+        <select><option>Option</option></select>
+      </div>
+      <div aria-hidden="true">
+        <details>Hello again<summary>Hello</summary></details>
+      </div>
+      <div aria-hidden="true">
+        <textarea></textarea>
+      </div>
+      <div aria-hidden="true">
+        <video controls></video>
+      </div>
+    </section>
+    <section>
+      <h1 role="text">This should not have role=text</h1>
+      <h2 role="text">This should not have role=text</h2>
+      <h3 role="text">This should not have role=text</h3>
+      <h4 role="text">This should not have role=text</h4>
+      <h5 role="text">This should not have role=text</h5>
+      <h6 role="text">This should not have role=text</h6>
+    </section>
+    <section>
+      <h2>Anchor tags should not be used as buttons</h2>
+      <a href="#">Do something</a>
+      <a href="javascript:void(0)" role="button">Do another thing</a>
+      <a href="javascript:doSomething(0)">Do another thing</a>
+    </section>
+    <section>
+      <h2>A <code>&lt;section&gt;</code> should contain a heading element</h2>
+      <section>
+        <h2>This is a heading element.</h1>
+      </section>
+      <section><!-- This is an empty section --></section>
+      <section>
+        <p>this is not a heading element, just a cool paragraph.</p>
+      </section>
     </section>
     <section>
       <h2>Inputs should have a valid label assigned</h2>
