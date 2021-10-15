@@ -1,3 +1,5 @@
+@use "../../shared/messages/" as *;
+
 label {
   &:not( [for] )::after { // False error when <input> is wrapped inside a <label>
     @include contentMessage(error, "E0015", "Ensure that <label> is always provided with a [for] attribute.");
