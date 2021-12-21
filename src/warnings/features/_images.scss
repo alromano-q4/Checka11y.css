@@ -15,13 +15,21 @@ $suspiciousAltStart: "graphic of", "bullet", "image of", "logo of", "logo for";
     @extend %imageMeaningfulAlt;
   }
 }
+
 @each $alt in $suspiciousAltEnd {
   img[alt$="#{$alt}"i] {
     @extend %imageMeaningfulAlt;
   }
 }
+
 @each $alt in $suspiciousAltStart {
   img[alt^="#{$alt}"i] {
     @extend %imageMeaningfulAlt;
   }
+}
+
+/* W0015: longdesc attribute is deprecated */
+
+img[longdesc] {
+  @include vectorMessage(warning, "W0015", 450, "longdesc attribute is", "deprecated and should be avoided.");
 }

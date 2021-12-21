@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Checka11y.css test</title>
+    <title></title>
     <link rel="stylesheet" href="./index.css" />
     <link rel="stylesheet" href="../checka11y.css" />
   </head>
@@ -13,6 +13,10 @@
     <hr />
     <section>
       <h2>HTML: html tag should have a lang attribute</h2>
+      <p>See top of page.</p>
+    </section>
+    <section>
+      <h2>Page title: the title tag should not be empty or missing</h2>
       <p>See top of page.</p>
     </section>
     <section>
@@ -51,6 +55,17 @@
       <img alt="graphic of a graphic" src="./assets/a11y.png" />
       <img alt="image of an image" src="./assets/a11y.png" />
       <img alt="bullet 1" src="./assets/a11y.png" />
+    </section>
+    <section>
+      <h2>Images: Should avoid longdesc attribute and it must be an URL.</h2>
+      <img alt="accessibility icon" src="./assets/a11y.png" longdesc="https://test.test" />
+      <img alt="accessibility icon" src="./assets/a11y.png" longdesc="https://test.jpg" />
+      <img alt="accessibility icon" src="./assets/a11y.png" longdesc="https://test.png" />
+      <img alt="accessibility icon" src="./assets/a11y.png" longdesc="https://test.gif" />
+      <img alt="accessibility icon" src="./assets/a11y.png" longdesc="https://test.avif" />
+      <img alt="accessibility icon" src="./assets/a11y.png" longdesc="https://test.svg" />
+      <img alt="accessibility icon" src="./assets/a11y.png" longdesc="This longdesc is invalid because it should be an URL instead of plain text" />
+      <img alt="accessibility icon" src="./assets/a11y.png" longdesc="" />
     </section>
     <section>
       <h2>iframe: iframe has title attribute</h2>

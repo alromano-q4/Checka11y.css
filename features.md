@@ -19,6 +19,10 @@ A list of every a11y concern Checka11y.css will check for and highlight with lin
 - [E0012](./codes.md#E0012): Checks `<dt>` and `<dd>` are the **only** direct children of `<dl>`.
 - [E0013](./codes.md#E0013): Checks if `<nav>` exists more than once on a page, that each nav is correctly labelled.
 - [E0014](./codes.md#E0014): Checks for a tab index value of -1 on commonly tabbed to elements.
+- [E0015](./codes.md#E0015): Checks for an image with a `longdesc` pointing to an image.
+- [E0016](./codes.md#E0016): Checks for an image with an empty `longdesc`.
+- [E0017](./codes.md#E0017): Checks for an empty `<title>` in the `<head>`.
+- [E0018](./codes.md#E0018): Checks for an `<head>` without a `<title>` element inside.
 
 ## Warnings
 
@@ -37,3 +41,4 @@ A list of every a11y concern Checka11y.css will check for and highlight with lin
 - [W0012](./codes.md#W0012): Checks for heading element inside `<section>` element.
 - [W0013](./codes.md#W0013): Checks for anchor tags that contain a link to a PDF, Word, Excel, or PowerPoint document.
 - [W0014](./codes.md#W0014): Checks for anchor tags that contain a link to content site.
+- [W0015](./codes.md#W0014): Checks for images with the `longdesc` attribute.
